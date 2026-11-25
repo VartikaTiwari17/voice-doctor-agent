@@ -1,0 +1,95 @@
+:root {
+  --bg: #F4F1EA;
+  --ink: #16140F;
+  --muted: #7B766B;
+  --line: #D9D4C7;
+  --accent: #1F6F54;
+  --danger: #E4572E;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: "Inter", sans-serif; font-size: 14px; line-height: 1.5;
+}
+main { max-width: 1280px; margin: 0 auto; padding: 32px 28px 64px; }
+header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--line); padding-bottom: 16px; margin-bottom: 32px;
+}
+h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 40px; letter-spacing: -0.01em; }
+.mono { font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+.muted { color: var(--muted); }
+.label {
+  font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1.1fr 360px; gap: 48px; align-items: start; }
+
+/* doctors */
+.doc { border-top: 1px solid var(--line); padding: 14px 0 18px; }
+.doc-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.doc-name { font-family: "Instrument Serif", serif; font-size: 22px; }
+.slot-row { display: flex; gap: 14px; padding: 4px 0; align-items: baseline; }
+.day { width: 78px; flex-shrink: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); border-radius: 99px; padding: 1px 10px; }
+
+/* table */
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left; font-weight: 400; color: var(--muted); font-size: 12px;
+  padding: 8px 8px 8px 0; border-bottom: 1px solid var(--ink);
+}
+td { padding: 11px 8px 11px 0; border-bottom: 1px solid var(--line); }
+tr { transition: background 0.6s; }
+tr.hl { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+
+/* phone */
+.phone {
+  width: 360px; height: 720px; background: var(--ink); border-radius: 44px;
+  padding: 10px; position: sticky; top: 24px;
+}
+.screen {
+  position: relative; height: 100%; background: var(--bg); border-radius: 36px;
+  padding: 28px 22px 22px; display: flex; flex-direction: column; overflow: hidden;
+}
+.center { margin: auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.who { font-family: "Instrument Serif", serif; font-size: 30px; }
+.top { text-align: center; margin-bottom: 14px; }
+.btn {
+  margin-top: 8px; background: var(--accent); color: #fff; border: 0;
+  border-radius: 99px; padding: 12px 34px; font: inherit; font-weight: 500; cursor: pointer;
+}
+.btn:hover { filter: brightness(1.1); }
+.ring {
+  width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--accent);
+  animation: pulse 1.4s ease-out infinite;
+}
+@keyframes pulse { from { transform: scale(0.7); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+.wave { align-self: center; margin-bottom: 12px; }
+.log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+.log p { max-width: 85%; padding: 8px 12px; border-radius: 14px; font-size: 13.5px; }
+.log .bot { background: #fff; border: 1px solid var(--line); align-self: flex-start; }
+.log .user { background: var(--ink); color: var(--bg); align-self: flex-end; }
+.confirm {
+  position: absolute; left: 16px; right: 16px; bottom: 96px; background: var(--accent);
+  color: #fff; border-radius: 18px; padding: 14px 16px; display: flex; flex-direction: column;
+  gap: 2px; animation: up 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.confirm .label { color: rgba(255,255,255,.7); margin: 0; }
+@keyframes up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.controls { display: flex; justify-content: center; gap: 18px; padding-top: 16px; }
+.round {
+  width: 78px; height: 78px; border-radius: 50%; border: 1px solid var(--line);
+  background: transparent; font: inherit; cursor: pointer; transition: all 0.2s;
+}
+.round.on { background: var(--ink); color: var(--bg); }
+.round.end { background: var(--danger); border-color: var(--danger); color: #fff; }
+
+/* mobile */
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: 1fr; gap: 36px; }
+  .phone { order: -1; margin: 0 auto; position: static; max-width: 100%; }
+}
